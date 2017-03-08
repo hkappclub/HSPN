@@ -73,6 +73,7 @@
 				258D5B831DCE1B1E00C99F11 /* AppDelegate.swift */,
 				25011A841DF9CB5F0019BD51 /* Data.swift */,
 				25011A901E0115580019BD51 /* AllTeamsViewController.swift */,
+				258B332D1E53D7C100A380A3 /* PageViewController.swift */,
 				25011A8E1E010B0F0019BD51 /* CalenderViewController.swift */,
 				25011A921E011AF50019BD51 /* FavoriteViewController.swift */,
 				25011A941E011D740019BD51 /* HomeViewController.swift */,
@@ -83,7 +84,6 @@
 				258B33271E53D59400A380A3 /* FallViewController.swift */,
 				258B33291E53D5AF00A380A3 /* WinterViewController.swift */,
 				258B332B1E53D5E500A380A3 /* SpringViewController.swift */,
-				258B332D1E53D7C100A380A3 /* PageViewController.swift */,
 			);
 			path = HSPN;
 			sourceTree = "<group>";

@@ -9,5 +9,14 @@
 import Foundation
 
 class Team {
+    var name: String = ""
+    var season: String = ""
+    var roster: [String] = [String]()
+    var schedule: Array<Array<String>> = Array<Array<String>>()
     
+}
+
+
+class User {
+    var favorite: [Team] = [Team]()
 }

@@ -17,6 +17,12 @@ class AllTeamsViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    var PageViewController: PageViewController? {
+        didSet {
+            PageViewController?.pageDelegate = self
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,25 +30,38 @@ class AllTeamsViewController: UIViewController {
         boyteams = ["Boys Varsity Soccer", "Boys Water Polo", "Varsity Football"]
         girlteams = ["Girls Varsity Soccer", "Girls Varsity Volleyball", "Girls JV Volleyball"]
         coedteams = ["Blah", "Blah Blah"]
-//        boysTableView.delegate = self
-//        girlsTableView.delegate = self
-//        coedTableView.delegate = self
-        pageControl.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
+        pageControl.addTarget(self, action: #selector(AllTeamsViewController.didChangePageControlValue), for: .valueChanged)
         
+        // Do any additional setup after loading the view, typically from a nib.
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let pageViewController = segue.destination as? PageViewController {
+            self.PageViewController = pageViewController
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func didChangePageControlValue() {
+        PageViewController?.scrollToViewController(index: pageControl.currentPage)
     }
-    */
-
+    
+    
 }
+
+extension AllTeamsViewController: PageViewControllerDelegate {
+    
+    func pageViewController(_ pageViewController: PageViewController,
+                            didUpdatePageCount count: Int) {
+        pageControl.numberOfPages = count
+    }
+    
+    func pageViewController(_ pageViewController: PageViewController,
+                            didUpdatePageIndex index: Int) {
+        pageControl.currentPage = index
+    }
+    
+}
+
